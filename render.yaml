@@ -25,3 +25,5 @@ services:
         value: INFO
       - key: LOG_LEVEL_SECURITY
         value: WARN
+      - key: SWAGGER_ENABLED
+        value: "false"
