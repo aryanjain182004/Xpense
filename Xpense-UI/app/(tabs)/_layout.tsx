@@ -1,14 +1,36 @@
 import { Redirect } from 'expo-router';
 import { TopTabs } from 'expo-router/js-top-tabs';
+import { useEffect, useState } from 'react';
+import { ActivityIndicator, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { useAuth } from '@/lib/auth';
+import { readToken } from '@/lib/storage';
 import { colors } from '@/lib/theme';
 
 export default function TabLayout() {
-  const { token, ready } = useAuth();
+  const [gate, setGate] = useState<'loading' | 'in' | 'out'>('loading');
 
-  if (ready && !token) {
+  useEffect(() => {
+    let cancelled = false;
+    void readToken().then((stored) => {
+      if (!cancelled) {
+        setGate(stored ? 'in' : 'out');
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  if (gate === 'loading') {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.bg }}>
+        <ActivityIndicator color={colors.accent} />
+      </View>
+    );
+  }
+
+  if (gate === 'out') {
     return <Redirect href="/login" />;
   }
 

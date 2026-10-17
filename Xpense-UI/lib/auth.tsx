@@ -1,20 +1,9 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 
 import { ApiError, NetworkError, api } from '@/lib/api';
+import { AuthContext, type AuthContextValue } from '@/lib/auth-context';
 import { clearToken, readToken, saveToken } from '@/lib/storage';
 import type { User } from '@/lib/types';
-
-type AuthContextValue = {
-  ready: boolean;
-  token: string | null;
-  user: User | null;
-  signIn: (idToken: string) => Promise<void>;
-  acceptToken: (token: string) => Promise<void>;
-  signOut: () => Promise<void>;
-  handleError: (error: unknown) => string;
-};
-
-const AuthContext = createContext<AuthContextValue | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);

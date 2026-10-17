@@ -7,7 +7,10 @@
     "icon": "./assets/images/icon.png",
     "scheme": "xpenseui",
     "userInterfaceStyle": "light",
-    "platforms": ["android", "web"],
+    "platforms": [
+      "android",
+      "web"
+    ],
     "android": {
       "package": "com.bahikhata.xpense",
       "adaptiveIcon": {
@@ -37,6 +40,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "95d2f423-874b-447c-ad28-780b1b3522dd"
+      }
     }
   }
 }
