@@ -1,0 +1,62 @@
+# Dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# EAS
+.eas/
+
+# Native (prebuild output — use app.json / EAS, do not commit)
+/ios
+/android
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# Environment (keep .env.example committed)
+.env
+.env*.local
+
+# TypeScript
+*.tsbuildinfo
+
+# Logs & debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+*.log
+
+# Test / coverage
+coverage/
+
+# macOS
+.DS_Store
+*.pem
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.iml
+*.swp
+*.swo
+*~
+
+# Cursor (local agent / editor state)
+.cursor/
+.claude/
